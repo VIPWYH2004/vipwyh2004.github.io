@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | WYH2004の小站</title>
+<title>MySQL第二次安装失败的解决方法  | WYH2004の小站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,7 +18,15 @@
 
 
 
-    <meta name="description" content="&lt;a href=&#34;https://space.bilibili.com/94181697&#34; target=&#34;_blank&#34;&gt;BiliBili&lt;/a&gt;">
+    <meta name="description" content="
+1.首先在控制面板中将名字与mysql有关的逐一的卸载。
+
+
+2.然后找到mysql安装目录将mysql文件夹全部删掉，即使是空的文件夹也要删掉。
+
+
+3.打开C:ProgramData，找到MySQL文件夹，并将其删除（关键的一步），C..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -92,30 +100,40 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
+          <div class="post-detail">
+            <h2 class="post-title">MySQL第二次安装失败的解决方法 </h2>
+            <div class="post-date">2020-01-09</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>1.首先在控制面板中将名字与mysql有关的逐一的卸载。</p>
+</blockquote>
+<blockquote>
+<p>2.然后找到mysql安装目录将mysql文件夹全部删掉，即使是空的文件夹也要删掉。</p>
+</blockquote>
+<blockquote>
+<p>3.打开C:ProgramData，找到MySQL文件夹，并将其删除（关键的一步），C:ProgramData这个目录默认是隐藏的，不能直接看到这个目录，可以 直接在c盘的搜索框中复制C:ProgramData这个路径找到MySQL文件夹删掉。</p>
+</blockquote>
+<blockquote>
+<p>4.在注册表(regedit)查询mysql，全部删除； cmd -&gt; regedit<br>
+1.HKEY_LOCAL_MACHINESYSTEMControlSet001ServicesEventlogApplicationMySQL<br>
+2.HKEY_LOCAL_MACHINESYSTEMControlSet002ServicesEventlogApplicationMySQL<br>
+3.HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesEventlogApplicationMySQL</p>
+</blockquote>
+<blockquote>
+<ol start="5">
+<li>然后我们删除完之后，重启电脑，重启完成后我们重新安装一次<br>
+（如果上一次安装的东西删除不干净有可能安装失败，再次安装前请仔细检查是否已删除干净）</li>
+</ol>
+</blockquote>
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
+            </div>
             
-              <h2 class="year" data-aos="fade-in" data-aos-delay="500">2020</h2>
-              
-                
-                  <article class="post">
-                    <a href="https://blog.wyh2004.top/post/mysql-di-er-ci-an-zhuang-shi-bai-de-jie-jue-fang-fa">
-                      <h2 class="post-title">
-                        MySQL第二次安装失败的解决方法 
-                      </h2>
-                    </a>
-                  </article>
-                
-              
             
+
+            
+
           </div>
-
-          <div class="pagination-container">
-  
-  
-</div>
 
         </div>
       </div>
