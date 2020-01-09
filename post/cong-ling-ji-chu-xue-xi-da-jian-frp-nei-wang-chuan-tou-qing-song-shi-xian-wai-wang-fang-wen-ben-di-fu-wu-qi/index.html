@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>从零基础学习搭建FRP内网穿透,轻松实现外网访问本地服务器!  | WYH2004の小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.wyh2004.top//favicon.ico?v=1578530617290">
+<link rel="stylesheet" href="https://blog.wyh2004.top//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+注意：用国内服务器搭建，需要域名备案才能使用
+
+
+
+一.Frp服务器的用途和原理
+
+利用处于内网或防火墙后的机器，对外网环境提供 http 或 https 服务。
+对于 http, https 服务支持基于域名的虚拟主机，支持自定义域名绑..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.wyh2004.top/">
+        <img src="https://blog.wyh2004.top//images/avatar.png?v=1578530617290" class="site-logo">
+        <h1 class="site-title">WYH2004の小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/VIPWYH2004" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      <a href="https://space.bilibili.com/94181697" target="_blank">BiliBili</a>
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.wyh2004.top//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">从零基础学习搭建FRP内网穿透,轻松实现外网访问本地服务器! </h2>
+            <div class="post-date">2020-01-09</div>
+            
+              <div class="feature-container" style="background-image: url('https://blog.wyh2004.top//post-images/cong-ling-ji-chu-xue-xi-da-jian-frp-nei-wang-chuan-tou-qing-song-shi-xian-wai-wang-fang-wen-ben-di-fu-wu-qi.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>注意：用国内服务器搭建，需要域名备案才能使用</p>
+</blockquote>
+<!-- more -->
+<blockquote>
+<p>一.Frp服务器的用途和原理</p>
+</blockquote>
+<p>利用处于内网或防火墙后的机器，对外网环境提供 http 或 https 服务。<br>
+对于 http, https 服务支持基于域名的虚拟主机，支持自定义域名绑定，使多个域名可以共用一个80端口。<br>
+利用处于内网或防火墙后的机器，对外网环境提供 tcp 和 udp 服务，例如在家里通过 ssh 访问处于公司内网环境内的主机</p>
+<blockquote>
+<p>二.安装Frp服务端</p>
+</blockquote>
+<p>1、公网服务器与内网服务器都需要下载frp进行安装 :<br>
+下载地址是https://github.com/fatedier/frp/releases<br>
+Frp下载地址<br>
+2.下载好之后，将压缩包进行解压,Linux可以使用该指令:<br>
+tar -zxvf &lt;压缩包的名字(要加后缀名的)&gt;<br>
+3.进入解压目录：<br>
+frps、frps.ini这个两个是服务端文件，frpc、frpc.ini这两个是客户端文件<br>
+4.然后配置服务端的配置文件<br>
+vi ./frps.ini<br>
+[common]<br>
+bind_port = 7000        #与客户端绑定的进行通信的端口<br>
+vhost_http_port = 80    #访问客户端http服务自定义的端口号<br>
+vhost_https_port = 443  #访问客户端https服务自定义的端口号<br>
+token = 12345678        #秘钥可以自己修改<br>
+按”i”键进行编辑，按“esc”退出编辑状态，输入“:wq”退出</p>
+<blockquote>
+<p>三.启动Frp服务端</p>
+</blockquote>
+<p>启动Frp服务的方法就是<br>
+./frps -c ./frps.ini<br>
+后台保持启动的指令：<br>
+nohup ./frps -c ./frps.ini &amp;</p>
+<blockquote>
+<p>四. 配置客户端</p>
+</blockquote>
+<p>vi ./frpc.ini<br>
+[common]<br>
+server_addr = 123.123.12.132      #公网服务器ip<br>
+server_port = 7000              #与服务端bind_port一致<br>
+token = 12345678               #与服务端秘钥一致</p>
+<p>#公网通过ssh访问内部服务器<br>
+[ssh]<br>
+type = tcp                      #连接协议<br>
+local_ip = 127.0.0.1            #内网服务器ip<br>
+local_port = 22                 #ssh默认端口号<br>
+remote_port = 6000              #自定义的访问内部ssh端口号</p>
+<p>#公网访问内部web服务器以http方式<br>
+[web]<br>
+type = http                     #访问协议<br>
+local_ip = 127.0.0.1            #内网服务器ip<br>
+local_port = 80                 #内网web服务的端口号<br>
+custom_domains = www.wyh2004.top,bilibili.tv<br>
+#所绑定的公网服务器域名，一级、二级域名都可以，绑定多个域名时用英文“,”分开</p>
+<blockquote>
+<p>五.启动客户端</p>
+</blockquote>
+<p>启动Frp的方法就是<br>
+./frps -c ./frps.ini<br>
+后台保持启动的指令：<br>
+nohup ./frps -c ./frps.ini &amp;</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.wyh2004.top/post/mysql-di-er-ci-an-zhuang-shi-bai-de-jie-jue-fang-fa">
+                  <h3 class="post-title">
+                    MySQL第二次安装失败的解决方法 
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
