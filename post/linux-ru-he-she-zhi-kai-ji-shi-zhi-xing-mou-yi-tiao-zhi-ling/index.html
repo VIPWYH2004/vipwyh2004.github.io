@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>MySQL第二次安装失败的解决方法  | WYH2004の小站</title>
+<title>Linux如何设置开机时执行某一条指令 | WYH2004の小站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,15 +18,16 @@
 
 
 
-    <meta name="description" content="
-1.首先在控制面板中将名字与mysql有关的逐一的卸载。
+    <meta name="description" content="配置自动启动
+笔者使用systemctl来控制启动，以服务端为例。
+首先
+使用这个命令生成服务
+sudo vim /lib/systemd/system/&lt;服务的名字&gt;.service
+在里面写入以下内容:
 
-
-2.然后找到mysql安装目录将mysql文件夹全部删掉，即使是空的文件夹也要删掉。
-
-
-3.打开C:ProgramData，找到MySQL文件夹，并将其删除（关键的一步），C..." />
-    <meta name="keywords" content="MySQL" />
+[Unit]
+De..." />
+    <meta name="keywords" content="Linux" />
   </head>
   <body>
     <div id="app" class="main">
@@ -101,45 +102,63 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">MySQL第二次安装失败的解决方法 </h2>
+            <h2 class="post-title">Linux如何设置开机时执行某一条指令</h2>
             <div class="post-date">2020-01-09</div>
             
-              <div class="feature-container" style="background-image: url('https://blog.wyh2004.top//post-images/mysql-di-er-ci-an-zhuang-shi-bai-de-jie-jue-fang-fa.jpg')">
-              </div>
-            
             <div class="post-content" v-pre>
-              <blockquote>
-<p>1.首先在控制面板中将名字与mysql有关的逐一的卸载。</p>
+              <p>配置自动启动<br>
+笔者使用systemctl来控制启动，以服务端为例。<br>
+首先<br>
+使用这个命令生成服务<br>
+sudo vim /lib/systemd/system/&lt;服务的名字&gt;.service<br>
+在里面写入以下内容:</p>
+<blockquote>
+<p>[Unit]<br>
+Description=fraps service<br>
+After=network.target network-online.target syslog.target<br>
+Wants=network.target network-online.target</p>
+<p>[Service]<br>
+Type=simple</p>
+</blockquote>
+<p>#启动服务使用的命令（可以使用路径，此处我已frps服务做演示）</p>
+<blockquote>
+<p>ExecStart=/root/frp/frps -c /root/frp/frps.ini</p>
+<p>[Install]<br>
+WantedBy=multi-user.target</p>
 </blockquote>
 <blockquote>
-<p>2.然后找到mysql安装目录将mysql文件夹全部删掉，即使是空的文件夹也要删掉。</p>
-</blockquote>
-<blockquote>
-<p>3.打开C:ProgramData，找到MySQL文件夹，并将其删除（关键的一步），C:ProgramData这个目录默认是隐藏的，不能直接看到这个目录，可以 直接在c盘的搜索框中复制C:ProgramData这个路径找到MySQL文件夹删掉。</p>
-</blockquote>
-<blockquote>
-<p>4.在注册表(regedit)查询mysql，全部删除； cmd -&gt; regedit<br>
-1.HKEY_LOCAL_MACHINESYSTEMControlSet001ServicesEventlogApplicationMySQL<br>
-2.HKEY_LOCAL_MACHINESYSTEMControlSet002ServicesEventlogApplicationMySQL<br>
-3.HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesEventlogApplicationMySQL</p>
-</blockquote>
-<blockquote>
-<ol start="5">
-<li>然后我们删除完之后，重启电脑，重启完成后我们重新安装一次<br>
-（如果上一次安装的东西删除不干净有可能安装失败，再次安装前请仔细检查是否已删除干净）</li>
-</ol>
+<p>相关命令<br>
+启动服务:<br>
+sudo systemctl start &lt;服务的名字&gt;<br>
+关闭服务:<br>
+sudo systemctl stop &lt;服务的名字&gt;<br>
+查看服务的日志信息:<br>
+sudo systemctl status &lt;服务的名字&gt;<br>
+设置服务开机自启:<br>
+sudo systemctl enable &lt;服务的名字&gt;<br>
+关闭服务开机自启:<br>
+sudo systemctl disabled &lt;服务的名字&gt;</p>
 </blockquote>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://blog.wyh2004.top/tag/mysql" class="tag">
-                    MySQL
+                  <a href="https://blog.wyh2004.top/tag/linux" class="tag">
+                    Linux
                   </a>
                 
               </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.wyh2004.top/post/cong-ling-ji-chu-xue-xi-da-jian-frp-nei-wang-chuan-tou-qing-song-shi-xian-wai-wang-fang-wen-ben-di-fu-wu-qi">
+                  <h3 class="post-title">
+                    从零基础学习搭建FRP内网穿透,轻松实现外网访问本地服务器! 
+                  </h3>
+                </a>
+              </div>
             
 
             
