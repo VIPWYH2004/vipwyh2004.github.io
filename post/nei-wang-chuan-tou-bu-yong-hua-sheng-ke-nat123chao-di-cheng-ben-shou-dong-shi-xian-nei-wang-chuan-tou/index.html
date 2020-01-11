@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>内网 穿透，不用花生壳、nat123，超低成本手动实现内网 穿透 | WYH2004の小站</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.wyh2004.top//favicon.ico?v=1578767341468">
+<link rel="stylesheet" href="https://blog.wyh2004.top//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="不用花生壳、nat123等内网穿透软件的原因：
+1、免费的限制多
+2、收费的价格高
+自己搞个网站、博客什么的成本高了自然不合适，当然土豪另当别论了。
+此次方案：279元💰/3年（购买云主机） 自己手动实现无限制内网穿透📡
+
+
+一、前提条..." />
+    <meta name="keywords" content="建站,Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.wyh2004.top/">
+        <img src="https://blog.wyh2004.top//images/avatar.png?v=1578767341468" class="site-logo">
+        <h1 class="site-title">WYH2004の小站</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="https://play.wyh2004.top" class="site-nav">
+            繁星国度
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/VIPWYH2004" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.wyh2004.top//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">内网 穿透，不用花生壳、nat123，超低成本手动实现内网 穿透</h2>
+            <div class="post-date">2020-01-12</div>
+            
+              <div class="feature-container" style="background-image: url('https://blog.wyh2004.top//post-images/nei-wang-chuan-tou-bu-yong-hua-sheng-ke-nat123chao-di-cheng-ben-shou-dong-shi-xian-nei-wang-chuan-tou.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>不用花生壳、nat123等内网穿透软件的原因：<br>
+1、免费的限制多<br>
+2、收费的价格高<br>
+自己搞个网站、博客什么的成本高了自然不合适，当然土豪另当别论了。<br>
+此次方案：279元💰/3年（购买云主机） 自己手动实现无限制内网穿透📡</p>
+<!-- more -->
+<blockquote>
+<p>一、前提条件</p>
+</blockquote>
+<p>1、需要一台服务器<br>
+这里推荐阿里云，1核2G 现在价格3年只要279元（相当的便宜啊！）<br>
+3年只要279元<br>
+<img src="https://blog.wyh2004.top//post-images/1578766458530.png" alt="" loading="lazy"><br>
+建立自己的网站，打造自己的博客，只差一个云主机，阿里云3年279元 你值得拥有 赶紧点击链接领取你的服务器吧！<br>
+https://promotion.aliyun.com/ntms/act/group/team.html?group=sl3S60iPJ7<br>
+　　2、购买好之后：<br>
+域名解析配置*.ngrok和ngrok<br>
+<img src="https://blog.wyh2004.top//post-images/1578766557951.png" alt="" loading="lazy"><br>
+本机环境变量配置<br>
+<code>vim /etc/profile</code><br>
+<code>export NGROK_DOMAIN=&quot;ngrok.yourdomain.com&quot;</code><br>
+&quot;&quot;里面改成你自己的域名<br>
+本机安装ngrok所需lib安装<br>
+<code>yum -y install zlib-devel openssl-devel perl hg cpio expat-devel gettext-devel curl curl-devel perl-ExtUtils-MakeMaker hg wget gcc gcc-c++ git</code></p>
+<blockquote>
+<p>二、搭建ngrok内网穿透</p>
+</blockquote>
+<p>这里原理就不详述了，可自行百度！<br>
+1、安装go语言<br>
+<code>//请下载合适自己的go语言包 我是centos 6.8 64位 所以选择以下包</code><br>
+<code>wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz</code><br>
+<code>tar -C /usr/local -xzf go1.8.3.linux-amd64.tar.gz</code><br>
+<code>vim /etc/profile</code><br>
+<code>//添加以下内容：</code><br>
+<code>export PATH=$PATH:/usr/local/go/bin</code><br>
+<code>source /etc/profile</code><br>
+<code>//检测是否安装成功go</code><br>
+<code>go version</code><br>
+2、下载ngrok源码包<br>
+　　github地址：https://github.com/inconshreveable/ngrok<br>
+<code>//创建目录</code><br>
+<code>mkdir /ngrok</code><br>
+<code>cd /ngrok</code><br>
+<code>git clone https://github.com/inconshreveable/ngrok.git</code><br>
+3、生成证书<br>
+<code>cd /ngrok</code><br>
+<code>mkdir cert</code><br>
+<code>cd cert</code><br>
+<code>openssl genrsa -out rootCA.key 2048</code><br>
+<code>openssl req -x509 -new -nodes -key rootCA.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -days 5000 -out rootCA.pem</code><br>
+<code>openssl genrsa -out server.key 2048</code><br>
+<code>openssl req -new -key server.key -subj &quot;/CN=$NGROK_DOMAIN&quot; -out server.csr</code><br>
+<code>openssl x509 -req -in server.csr -CA rootCA.pem -CAkey rootCA.key -CAcreateserial -out server.crt -days 5000</code><br>
+4、覆盖证书<br>
+<code>cp rootCA.pem /ngrok/ngrok/assets/client/tls/ngrokroot.crt #复制rootCA.pem到assets/client/tls/并更名为ngrokroot.crt</code><br>
+<code>cp server.crt /ngrok/ngrok/assets/server/tls/snakeoil.crt #复制server.crt到assets/server/tls/并更名为snakeoil.crt</code><br>
+<code>cp server.key /ngrok/ngrok/assets/server/tls/snakeoil.key #复制server.key到assets/server/tls/并更名为snakeoil.key</code><br>
+5、编译生成ngrokd<br>
+<code>cd /ngrok/ngrok</code><br>
+<code>go env //查看环境</code><br>
+<code>GOOS=linux GOARCH=amd64 make release-server</code><br>
+6、测试运行<br>
+<code>cd /ngrok/ngrok</code><br>
+<code>./bin/ngrokd -tlsKey=&quot;assets/server/tls/snakeoil.key&quot; -tlsCrt=&quot;assets/server/tls/snakeoil.crt&quot; -domain=&quot;ngrok.yourdomain.com&quot; -httpAddr=&quot;:8081&quot; -httpsAddr=&quot;:8082&quot;</code><br>
+<code>-tunnelAddr=&quot;:8083&quot;</code><br>
+&quot;&quot;里面改成你自己的域名<br>
+7、后台运行<br>
+<code>cd /ngrok/ngrok</code><br>
+<code>setsid ./bin/ngrokd -tlsKey=&quot;assets/server/tls/snakeoil.key&quot; -tlsCrt=&quot;assets/server/tls/snakeoil.crt&quot; -domain=&quot;ngrok.yourdomain.com&quot; -httpAddr=&quot;:8081&quot; -httpsAddr=&quot;:8082&quot;</code><br>
+<code>-tunnelAddr=&quot;:8083&quot;</code><br>
+&quot;&quot;里面改成你自己的域名<br>
+这样就可以让服务跑在后台了<br>
+8、编译客户端<br>
+<code>GOOS=windows GOARCH=amd64 make release-client</code><br>
+<code>#编译成功后会在ngrok/bin/下面生成一个windows_amd64目录下面有ngrok.exe</code><br>
+<code>`#Linux 平台 32 位系统：GOOS=linux GOARCH=386` `#Linux 平台 64 位系统：GOOS=linux GOARCH=amd64` `#Windows 平台 32 位系统：GOOS=windows GOARCH=386` `#Windows 平台 64 位系统：GOOS=windows GOARCH=amd64` `#MAC 平台 32 位系统：GOOS=darwin GOARCH=386` `#MAC 平台 64 位系统：GOOS=darwin GOARCH=amd64` `#ARM 平台：GOOS=linux GOARCH=arm` 9、运行客户端 将编译好的客户端下载到本地，客户端的目录在 ![](https://blog.wyh2004.top//post-images/1578767121194.png) 在这个目录下有个ngrok.exe下载下来 在ngrok.exe的同级目录下，新建一个ngrok.cfg和start.bat两个文件 ![](https://blog.wyh2004.top//post-images/1578767139315.png) ngrok.cfg内容 `server_addr: &quot;myngrok.com:8083&quot;` `trust_host_root_certs: false` start.bat内容 `ngrok -config=ngrok.cfg -subdomain=test 80` -subdomain=test的test是域名前缀，可自定义 执行start.bat `//出现以下内容表示成功链接：` `ngrok`</code><br>
+<code>Tunnel Status online</code><br>
+<code>Version 1.7/1.7</code><br>
+<code>Forwarding http://test.ngrok.yourdomian.com:8081 -&gt; 127.0.0.1:80</code><br>
+<code>Forwarding https://test.ngrok.yourdomain.com:8081 -&gt; 127.0.0.1:80</code><br>
+<code>Web Interface 127.0.0.1:4040</code><br>
+<code># Conn 0</code><br>
+<code>Avg Conn Time 0.00ms</code></p>
+<hr>
+<p>本文参考：<br>
+https://segmentfault.com/a/1190000010338848<br>
+https://blog.csdn.net/zhangguo5/article/details/77848658?utm_source=5ibc.net&amp;utm_medium=referral</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.wyh2004.top/tag/jian-zhan" class="tag">
+                    建站
+                  </a>
+                
+                  <a href="https://blog.wyh2004.top/tag/linux" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.wyh2004.top/post/linux-ru-he-she-zhi-kai-ji-shi-zhi-xing-mou-yi-tiao-zhi-ling">
+                  <h3 class="post-title">
+                    Linux如何设置开机时执行某一条指令
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
