@@ -2,13 +2,33 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.wyh2004.top/</id>
     <title>WYH2004の小站</title>
-    <updated>2020-01-30T12:34:32.835Z</updated>
+    <updated>2020-01-31T04:13:14.797Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.wyh2004.top/"/>
     <link rel="self" href="https://blog.wyh2004.top/atom.xml"/>
     <logo>https://blog.wyh2004.top/images/avatar.png</logo>
     <icon>https://blog.wyh2004.top/favicon.ico</icon>
     <rights>All rights reserved 2020, WYH2004の小站</rights>
+    <entry>
+        <title type="html"><![CDATA[用HTML看BadApple是什么效果]]></title>
+        <id>https://blog.wyh2004.top/post/yong-html-kan-badapple-shi-shi-me-xiao-guo</id>
+        <link href="https://blog.wyh2004.top/post/yong-html-kan-badapple-shi-shi-me-xiao-guo">
+        </link>
+        <updated>2020-01-30T12:35:13.000Z</updated>
+        <content type="html"><![CDATA[<p>emmmm，直接上GitHub<br>
+https://github.com/VIPWYH2004/BadApple_Web<br>
+视频演示:<br>
+https://www.bilibili.com/video/av85787807/<br>
+原理很简单，逐帧播放图片，后台在加上个音乐，完成<br>
+用的是最简单的HTML，所以电脑都跑的起来，就是网速...<br>
+毕竟这次，整个badapple转换过来，直接6575张图片<br>
+而且这次服务器还是GitHub的服务器<br>
+所以说还是下载下来本地HTML好了<br>
+当然，如果你相信你的网速<br>
+请吧！勇士！<br>
+https://badapple.wyh2004.top</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[TicWatch 2/S/E 救砖教程]]></title>
         <id>https://blog.wyh2004.top/post/ticwatch-2se-jiu-zhuan-jiao-cheng</id>
