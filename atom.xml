@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.wyh2004.top/</id>
     <title>WYH2004の小站</title>
-    <updated>2020-01-31T04:13:14.797Z</updated>
+    <updated>2020-02-26T18:40:30.788Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.wyh2004.top/"/>
     <link rel="self" href="https://blog.wyh2004.top/atom.xml"/>
@@ -307,9 +307,9 @@ nohup ./frps -c ./frps.ini &amp;</p>
 </blockquote>
 <blockquote>
 <p>4.在注册表(regedit)查询mysql，全部删除； cmd -&gt; regedit<br>
-1.HKEY_LOCAL_MACHINESYSTEMControlSet001ServicesEventlogApplicationMySQL<br>
-2.HKEY_LOCAL_MACHINESYSTEMControlSet002ServicesEventlogApplicationMySQL<br>
-3.HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesEventlogApplicationMySQL</p>
+1.HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL<br>
+2.HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL<br>
+3.HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL</p>
 </blockquote>
 <blockquote>
 <ol start="5">
