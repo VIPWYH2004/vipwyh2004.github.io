@@ -2,13 +2,65 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.wyh2004.top/</id>
     <title>WYH2004の小站</title>
-    <updated>2020-02-26T18:40:30.788Z</updated>
+    <updated>2020-03-11T04:57:22.247Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.wyh2004.top/"/>
     <link rel="self" href="https://blog.wyh2004.top/atom.xml"/>
     <logo>https://blog.wyh2004.top/images/avatar.png</logo>
     <icon>https://blog.wyh2004.top/favicon.ico</icon>
     <rights>All rights reserved 2020, WYH2004の小站</rights>
+    <entry>
+        <title type="html"><![CDATA[minecraft服务器常见报错]]></title>
+        <id>https://blog.wyh2004.top/post/minecraft-fu-wu-qi-chang-jian-bao-cuo</id>
+        <link href="https://blog.wyh2004.top/post/minecraft-fu-wu-qi-chang-jian-bao-cuo">
+        </link>
+        <updated>2020-03-11T04:55:07.000Z</updated>
+        <content type="html"><![CDATA[<p>Can't resolve hostname<br>
+服务器IP输入错误，或者目前网络状态极差</p>
+<p>Connection refused: connect<br>
+寻找不到服务器，或者服务器关闭中，建议检测IP是否正确</p>
+<p>Connection Timed Out<br>
+服务器或者你的网络极差，或者服务器正在执行大型数据计算，例如使用Worldedit插件编辑大量方块时</p>
+<p>Failed to login: User not premium 或 Bad login<br>
+盗版尝试登录正版服务器，可以在Server.properties内关闭正版验证</p>
+<p>Outdated server !<br>
+服务器版本过旧（根据你目前使用的客户端而言）</p>
+<p>Outdated client !<br>
+服务器版本过新（根据你目前使用的客户端而言）</p>
+<p>java.net.SocketException: Connection reset by peer […]<br>
+你的网络状态极差或者即将掉线——正版服务器有可能是因为Minecraft.net验证服务器出现错误</p>
+<p>You are not white-listed on this server<br>
+你不在服务器白名单内</p>
+<p>You are banned from this server !<br>
+你被Ban了</p>
+<p>Internal server error<br>
+服务器数据错误（原因很多可以是插件导致/Mod导致等...）</p>
+<p>End of Stream<br>
+你的网络状态极差，或者服务器取读不了客户端内的一部分数据，通常有安装MOD的客户端才会出现次症状，也有可能短时间内频繁登录服务器。</p>
+<p>Internal Exception: io.netty.handler.timeout.ReadTimeoutException<br>
+客户端取读不了服务器传输的数据包（过大），或者服务器状态不佳</p>
+<p>java.io.IOException: Server returned HTTP response code: 503<br>
+正版服务器验证服务器掉线，导致验证失败</p>
+<p>Took to long to log in<br>
+同上，或者登录花时过长稍后再试</p>
+<p>Server closed<br>
+服务器关闭。</p>
+<p>Your country is banned from this server<br>
+Authme开启了国家黑名单保护，用N++打开Authme文件夹里config.yml里面的181行给删除了就可以了</p>
+<p>You have connected too fast. You must wait at least 4 seconds between connections.<br>
+这个是在连接BC服时，你连接太快了，需要等4秒才能重新连接</p>
+<p>The server you were previously on went down, you have been connected to the lobby<br>
+这个是BC服插件的问题，详细请查看BC后台的报错信息</p>
+<p>Server is full!<br>
+服务器已经满人！</p>
+<p>Could not connect to default or fallback server, please try again later: [...]<br>
+连接BC服不能连接，这个提示是因为大厅没有开。或者是其他的原因</p>
+<p>You are already connected to this server!<br>
+你已经连接到了这个服务器。</p>
+<p>Already connecting to this server!<br>
+正在连接这个服务器中。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用HTML看BadApple是什么效果]]></title>
         <id>https://blog.wyh2004.top/post/yong-html-kan-badapple-shi-shi-me-xiao-guo</id>
