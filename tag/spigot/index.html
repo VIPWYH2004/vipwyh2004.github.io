@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Linux如何设置开机时执行某一条指令 | WYH2004の小站</title>
+<title>Spigot | WYH2004の小站</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,16 +18,7 @@
 
 
 
-    <meta name="description" content="配置自动启动
-笔者使用systemctl来控制启动，以服务端为例。
-首先
-使用这个命令生成服务
-sudo vim /lib/systemd/system/&lt;服务的名字&gt;.service
-在里面写入以下内容:
-
-[Unit]
-De..." />
-    <meta name="keywords" content="Linux" />
+    <meta name="description" content="">
   </head>
   <body>
     <div id="app" class="main">
@@ -101,72 +92,28 @@ De..." />
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Linux如何设置开机时执行某一条指令</h2>
-            <div class="post-date">2020-01-09</div>
-            
-              <div class="feature-container" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Icons8_flat_linux.svg/1024px-Icons8_flat_linux.svg.png')">
-              </div>
-            
-            <div class="post-content" v-pre>
-              <p>配置自动启动<br>
-笔者使用systemctl来控制启动，以服务端为例。<br>
-首先<br>
-使用这个命令生成服务<br>
-sudo vim /lib/systemd/system/&lt;服务的名字&gt;.service<br>
-在里面写入以下内容:</p>
-<blockquote>
-<p>[Unit]<br>
-Description=fraps service<br>
-After=network.target network-online.target syslog.target<br>
-Wants=network.target network-online.target</p>
-<p>[Service]<br>
-Type=simple</p>
-</blockquote>
-<p>#启动服务使用的命令（可以使用路径，此处我已frps服务做演示）</p>
-<blockquote>
-<p>ExecStart=/root/frp/frps -c /root/frp/frps.ini</p>
-<p>[Install]<br>
-WantedBy=multi-user.target</p>
-</blockquote>
-<blockquote>
-<p>相关命令<br>
-启动服务:<br>
-sudo systemctl start &lt;服务的名字&gt;<br>
-关闭服务:<br>
-sudo systemctl stop &lt;服务的名字&gt;<br>
-查看服务的日志信息:<br>
-sudo systemctl status &lt;服务的名字&gt;<br>
-设置服务开机自启:<br>
-sudo systemctl enable &lt;服务的名字&gt;<br>
-关闭服务开机自启:<br>
-sudo systemctl disabled &lt;服务的名字&gt;</p>
-</blockquote>
-
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://blog.wyh2004.top/tag/linux" class="tag">
-                    Linux
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://blog.wyh2004.top/post/cong-ling-ji-chu-xue-xi-da-jian-frp-nei-wang-chuan-tou-qing-song-shi-xian-wai-wang-fang-wen-ben-di-fu-wu-qi">
-                  <h3 class="post-title">
-                    从零基础学习搭建FRP内网穿透,轻松实现外网访问本地服务器! 
-                  </h3>
+          <h2 class="current-tag">标签: Spigot</h2>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://blog.wyh2004.top/post/minecraft-fu-wu-qi-chang-jian-bao-cuo">
+                  <h2 class="post-title">minecraft服务器常见报错</h2>
                 </a>
+                <div class="post-date">
+                  2020-03-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
               </div>
-            
+              
+            </article>
+          
 
-            
-
-          </div>
+          <div class="pagination-container">
+  
+  
+</div>
 
         </div>
       </div>
